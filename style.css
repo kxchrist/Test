@@ -1,0 +1,172 @@
+
+body{
+margin:0;
+font-family:'Bangers', cursive;
+background:linear-gradient(270deg,#ff0080,#ff8c00,#ffee00,#00ff9d,#00c3ff);
+background-size:1000% 1000%;
+animation:bgMove 18s ease infinite;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+h1{
+font-size:40px;
+letter-spacing:3px;
+}
+
+button{
+font-family:'Bangers';
+font-size:18px;
+padding:12px 18px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#ff3c3c,#ff9800);
+color:white;
+cursor:pointer;
+transition:.2s;
+box-shadow:0 6px 20px rgba(0,0,0,0.4);
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+/* pages */
+
+#welcome,#rules,#game,#play,#ranking{
+display:none;
+padding:20px;
+}
+
+#welcome{
+display:block;
+}
+
+/* joueurs */
+
+#players{
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.player{
+background:linear-gradient(145deg,#8d5a3c,#5a3a2a);
+padding:14px;
+border-radius:40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* grille jeu */
+
+#playPlayers{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-top:20px;
+}
+
+/* barre */
+
+.progress{
+width:100%;
+height:14px;
+background:rgba(255,255,255,0.3);
+border-radius:20px;
+overflow:hidden;
+margin:10px 0;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00e5ff,#2979ff);
+border-radius:20px;
+transition:width .6s ease;
+box-shadow:0 0 10px #00e5ff;
+}
+
+/* singe */
+
+.singe{
+border:3px solid red;
+animation:monkey .6s infinite alternate;
+}
+
+@keyframes monkey{
+from{transform:scale(1)}
+to{transform:scale(1.1)}
+}
+
+/* confetti */
+
+.confetti{
+position:fixed;
+width:10px;
+height:10px;
+top:-10px;
+animation:fall 3s linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(720deg);
+}
+}
+
+/* bananes */
+
+.banana{
+position:fixed;
+top:-50px;
+font-size:30px;
+animation:bananaFall 5s linear infinite;
+}
+
+@keyframes bananaFall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* classement */
+
+.rankPlayer{
+background:#2c2c2c;
+padding:15px;
+margin:10px;
+border-radius:12px;
+font-size:22px;
+box-shadow:0 5px 10px rgba(0,0,0,0.4);
+}
+
+/* bouton fin */
+
+#btnEndGame{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:#ff3c3c;
+font-size:20px;
+padding:14px 30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
