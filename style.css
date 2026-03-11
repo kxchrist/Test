@@ -1,0 +1,273 @@
+/* ===== Reset et Body ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Bangers', cursive;
+  background: linear-gradient(270deg, #ff0080, #ff8c00, #ffee00, #00ff9d, #00c3ff);
+  background-size: 1000% 1000%;
+  animation: bgMove 18s ease infinite;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ===== Animation background ===== */
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Titres ===== */
+h1 {
+  font-size: 40px;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+/* ===== Boutons ===== */
+button {
+  font-family: 'Bangers', cursive;
+  font-size: 18px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #ff3c3c, #ff9800);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  text-align: center;
+}
+
+/* ===== Pages centrées ===== */
+#welcome, #game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Pages cachées par défaut */
+#play, #lobby, #ranking, #rulesPanel, #settingsPanel, #soundPanel {
+  display: none;
+  padding: 20px;
+  text-align: center;
+}
+
+/* ===== Pre-lobby et boutons ===== */
+#lobbyButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#lobbyButtons button {
+  min-width: 120px;
+}
+
+/* Paramètres Panel */
+#settingsPanel {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+#settingsPanel button {
+  margin: 5px;
+}
+
+/* ===== Lobby joueurs ===== */
+#lobbyPlayers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+#lobbyPlayers .player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 120px;
+  max-width: 180px;
+  padding: 10px 12px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffcc80, #ffb74d);
+  color: #333;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#lobbyPlayers .player:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
+#lobbyPlayers .player button {
+  margin-left: 8px;
+  padding: 4px 8px;
+  font-size: 0.85em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #ff8f00;
+  font-weight: bold;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#lobbyPlayers .player button:hover {
+  background-color: #ff8f00;
+  color: #fff;
+}
+
+/* Icône Prêt / Pas prêt */
+#lobbyPlayers .player span {
+  margin-left: 6px;
+  font-size: 1.1em;
+}
+
+/* Lancer la partie */
+#btnStartGame {
+  background-color: #ffb74d;
+  border: none;
+  color: #333;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#btnStartGame:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#btnStartGame:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* ===== Partie (game) ===== */
+#playPlayers {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* gauche pseudo | centre joueur | droite shots */
+  gap: 15px;
+  margin-top: 20px;
+}
+
+#playPlayers .player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#playPlayers .player:hover {
+  transform: scale(1.05);
+}
+
+/* Barre de progression quart */
+.progress {
+  width: 100%;
+  height: 14px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg,#00e5ff,#2979ff);
+  border-radius: 20px;
+  transition: width 0.6s ease;
+  box-shadow: 0 0 10px #00e5ff;
+}
+
+/* Quart SINGE */
+.singe {
+  border: 3px solid red;
+  animation: monkey 0.6s infinite alternate;
+}
+
+@keyframes monkey {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* ===== Confetti ===== */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(720deg); }
+}
+
+/* ===== Bananes ===== */
+.banana {
+  position: fixed;
+  top: -50px;
+  font-size: 30px;
+  animation: bananaFall 5s linear infinite;
+}
+
+@keyframes bananaFall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* ===== Classement ===== */
+.rankPlayer {
+  background: #2c2c2c;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 12px;
+  font-size: 22px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.4);
+}
+
+/* ===== Bouton Fin de Partie ===== */
+#btnEndGame {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff3c3c;
+  font-size: 20px;
+  padding: 14px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  cursor: pointer;
+}
